@@ -23,10 +23,11 @@ mongoose
   )
   .then(() => console.log("MongoDBga muvaffaqiyatli ulandi"))
   .catch((err) => console.error("MongoDBga ulanishda xatolik:", err));
-
-app.get("/", (req, res) => {
-  res.send("Salom, bu backend server!");
-});
+  
+  app.get("/", (req, res) => {
+    res.send("Server ishlayapti");
+  });
+  
 
 app.get("/api/people", async (req, res) => {
   try {
