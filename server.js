@@ -55,7 +55,6 @@ app.post("/api/people", async (req, res) => {
   }
 });
 
-// Render avtomatik portga quloq soladi
 app.listen(PORT, () => {
   console.log(`🚀 Server ${PORT}-portda ishlamoqda`);
 });
