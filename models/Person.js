@@ -1,18 +1,20 @@
 const mongoose = require("mongoose");
 
 const connectionSchema = new mongoose.Schema({
-  target: { type: Number, required: true },
-  type: { type: String, required: true },
+  target: Number,
+  type: String
+}, { _id: false });
+
+const userSchema = new mongoose.Schema({
+  id: Number,
+  name: String,
+  occupation: String,
+  location: String,
+  connections: [connectionSchema]
+}, { _id: false });
+
+const peopleSchema = new mongoose.Schema({
+  users: [userSchema]
 });
 
-const personSchema = new mongoose.Schema({
-    id: { type: Number, required: true },
-    name: { type: String, required: true },
-    occupation: { type: String, required: true },
-    location: { type: String, required: true },
-    connections: [connectionSchema]
-})
-
-const Person = mongoose.model("Person", personSchema);
-
-module.exports = Person;
+module.exports = mongoose.model("Person", peopleSchema);

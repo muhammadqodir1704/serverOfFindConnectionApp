@@ -8,12 +8,11 @@ const Person = require("./models/Person");
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// Render frontenddan kirishga ruxsat berish
 app.use(cors({
   origin: [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://findconnectionapp.onrender.com" // Frontend URL — render frontend manzilingizni yozing
+    "https://findconnectionapp.onrender.com" 
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -22,17 +21,14 @@ app.use(cors({
 
 app.use(express.json());
 
-// MongoDBga ulanish
 mongoose.connect('mongodb+srv://proffdev_66:gopa0417@cluster0.frak9kw.mongodb.net/findconnection?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log("✅ MongoDBga muvaffaqiyatli ulandi"))
   .catch((err) => console.error("❌ MongoDBga ulanishda xatolik:", err));
 
-// Asosiy route
 app.get("/", (req, res) => {
   res.send("✅ Server ishlayapti");
 });
 
-// Barcha odamlarni olish
 app.get("/api/people", async (req, res) => {
   try {
     const people = await Person.find();
