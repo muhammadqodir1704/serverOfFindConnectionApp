@@ -29,10 +29,10 @@ app.get("/", (req, res) => {
   res.send("✅ Server ishlayapti");
 });
 
-app.get("/api/people", async (req, res) => {
+app.get("/api/users", async (req, res) => {
   try {
-    const people = await Person.find();
-    res.json(people);
+    const doc = await Person.findOne(); // birinchi hujjatni oladi
+    res.json(doc?.users || []); // users arrayni qaytaradi
   } catch (error) {
     console.error("❌ Error fetching people:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -40,7 +40,7 @@ app.get("/api/people", async (req, res) => {
 });
 
 // Yangi odam qo'shish
-app.post("/api/people", async (req, res) => {
+app.post("/api/users", async (req, res) => {
   try {
     const newPerson = new Person(req.body);
     await newPerson.save();
