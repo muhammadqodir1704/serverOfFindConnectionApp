@@ -29,12 +29,13 @@ app.get("/", (req, res) => {
   res.send("✅ Server ishlayapti");
 });
 
+
 app.get("/api/users", async (req, res) => {
   try {
-    const doc = await Person.findOne(); // birinchi hujjatni oladi
-    res.json(doc?.users || []); // users arrayni qaytaradi
+    const users = await User.find(); //  users collectiondan oladi
+    res.json(users);
   } catch (error) {
-    console.error("❌ Error fetching people:", error);
+    console.error("❌ Error fetching users:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
