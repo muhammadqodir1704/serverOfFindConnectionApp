@@ -13,8 +13,8 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://127.0.0.1:5173",
-      "https://findconnectionapp.onrender.com",
-      "https://find-connections-app.vercel.app/",
+      "https://find-connections-app.vercel.app",
+      "https://findconnectionapp.onrender.com"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
