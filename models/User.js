@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const connectionSchema = new mongoose.Schema({
@@ -11,10 +12,5 @@ const userSchema = new mongoose.Schema({
   occupation: String,
   location: String,
   connections: [connectionSchema]
-}, { _id: false });
-
-const peopleSchema = new mongoose.Schema({
-  users: [userSchema]
 });
-
-module.exports = mongoose.model("Person", peopleSchema);
+module.exports = mongoose.model("User", userSchema, "users");

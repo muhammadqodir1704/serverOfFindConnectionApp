@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-const Person = require("./models/Person");
+const User = require("./models/User");
 
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -21,7 +21,7 @@ app.use(cors({
 
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://proffdev_66:gopa0417@cluster0.frak9kw.mongodb.net/findconnection?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://proffdev_66:gopa0417@cluster0.frak9kw.mongodb.net/find_connection_app?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log("✅ MongoDBga muvaffaqiyatli ulandi"))
   .catch((err) => console.error("❌ MongoDBga ulanishda xatolik:", err));
 
